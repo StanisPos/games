@@ -1,5 +1,6 @@
 import Base from '../base/base';
 import Chess from '../chess/chess';
+import Draw from '../draw/draw';
 
 const Buttons = {
 	clean: {
@@ -18,6 +19,7 @@ export default class Button extends Base {
 		super();
 
 		this.chess = new Chess();
+		this.draw = new Draw();
 		console.log(name)
 		console.dir(this)
 	}
@@ -29,24 +31,23 @@ export default class Button extends Base {
 	}
 
 	_createButton(b, container) {
-		const btn = this.getNewElement({elem: 'button', type: 'button', class: b, value: b, textContent: Buttons[b].text});
+		const btn = this.createElement('button', {type: 'button', class: b, value: b, textContent: Buttons[b].text});
 		this._addHandler(btn);
 		container.appendChild(btn)
 	}
 
 	_addHandler(btn) {
-		const value = btn.getAttribute('value');
-		btn.addEventListener('click', () => {
-			if (value === 'clean') {
-				this[value]();
-			} else {
+		btn.addEventListener('click', (evt) => {
+			const value = evt.target.getAttribute('value');
+
+			this.clean();
+			if (value !== 'clean') {
 				this[value].show();
 			}
 		})
 	}
 
 	clean() {
-		console.log(this.container)
 		this.container.innerHTML = ''
 	}
 

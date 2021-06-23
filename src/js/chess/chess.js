@@ -7,7 +7,7 @@ export default class Chess extends Base {
 	}
 
 	createTableCol(parent, rowNumber, index) {
-		const tableCol = document.createElement('td')
+		const tableCol = this.createElement('td');
 		tableCol.style.backgroundColor = `${(rowNumber + index) % 2 === 0 ? 'white' : 'brown'}`
 		this.createLetter(tableCol, rowNumber, index)
 		parent.appendChild(tableCol)
@@ -33,7 +33,7 @@ export default class Chess extends Base {
 	}
 
 	createTableRow(parent, rowNumber) {
-		const tableRow = document.createElement('tr');
+		const tableRow = this.createElement('tr');
 
 		for (let i = 0; i < this.letters.length; i++) {
 			this.createTableCol(tableRow, rowNumber, i)
@@ -42,12 +42,8 @@ export default class Chess extends Base {
 	}
 
 	show() {
-		if (this.getEntry('table')) {
-			return
-		}
+		const table = this.createElement('table', {class: 'table'});
 
-		const table = document.createElement('table');
-		table.classList.add('table')
 		for (let i = 0; i < this.letters.length; i++) {
 			this.createTableRow(table, i);
 		}

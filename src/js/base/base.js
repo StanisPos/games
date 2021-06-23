@@ -15,11 +15,8 @@ export default class Base {
 		return document.createDocumentFragment()
 	}
 
-	getEntry(className) {
-		return this.container.querySelector(`.${className}`)
-	}
-
-	getNewElement({elem, textContent, ...attr}) {
+	createElement(elem, options = {}) {
+		const {textContent, ...attr} = options;
 		const element = document.createElement(elem);
 
 
