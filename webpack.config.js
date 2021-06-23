@@ -27,7 +27,12 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader'],
-			}
+			},
+			{
+				test: /\.js$/,
+				enforce: "pre",
+				use: ["source-map-loader"],
+			},
 		]
 	}
 

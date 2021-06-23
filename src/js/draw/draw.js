@@ -1,4 +1,5 @@
-import { BLOCKS, COLOR_SYMBOLS, container } from './constants';
+import { container } from '../constants';
+import { BLOCKS, COLOR_SYMBOLS } from './contants';
 
 const getRandomColor = () => {
 	let color = ''
