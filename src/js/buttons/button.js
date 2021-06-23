@@ -38,17 +38,20 @@ export default class Button extends Base {
 
 	_addHandler(btn) {
 		btn.addEventListener('click', (evt) => {
-			const value = evt.target.getAttribute('value');
-
 			this.clean();
+			const value = evt.target.getAttribute('value');
+			this[value].show ? this[value].show() : this[value];
+
 			if (value !== 'clean') {
-				this[value].show();
+				evt.target.classList.add('active')
+				this.activeBtn = evt.target
 			}
 		})
 	}
 
 	clean() {
 		this.container.innerHTML = ''
+		this.activeBtn?.classList.remove('active');
 	}
 
 	init() {
