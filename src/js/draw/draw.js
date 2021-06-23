@@ -19,10 +19,7 @@ export default class Draw extends Base {
 	}
 
 	get _createdBlock() {
-		const element = this.createElement('div', {class: 'block'})
-		element.style.transitionProperty = 'background-color';
-		element.style.transitionDuration = '300ms';
-		return element;
+		return this.createElement('div', {class: 'block'})
 	}
 
 	_setChangeColorHandler(evt) {

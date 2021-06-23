@@ -26,12 +26,12 @@ export default class Button extends Base {
 
 	get buttons() {
 		const btnContainer = this.fragment;
-		Object.keys(Buttons).map((b) => this._createButton(b, btnContainer))
+		Object.keys(Buttons).map((key) => this._createButton(key, btnContainer))
 		return btnContainer
 	}
 
-	_createButton(b, container) {
-		const btn = this.createElement('button', {type: 'button', class: b, value: b, textContent: Buttons[b].text});
+	_createButton(key, container) {
+		const btn = this.createElement('button', {type: 'button', class: key, value: key, textContent: Buttons[key].text});
 		this._addHandler(btn);
 		container.appendChild(btn)
 	}
@@ -40,7 +40,7 @@ export default class Button extends Base {
 		btn.addEventListener('click', (evt) => {
 			this.clean();
 			const value = evt.target.getAttribute('value');
-			this[value].show ? this[value].show() : this[value];
+			this[value].show && this[value].show();
 
 			if (value !== 'clean') {
 				evt.target.classList.add('active')
