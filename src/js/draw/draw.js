@@ -1,9 +1,11 @@
 import Base from '../base/base';
+import { Circle } from './circle';
 
 export default class Draw extends Base {
 	constructor() {
 		super();
-		this.maxBlocks = 6000;
+		this.circle = new Circle()
+		this.maxBlocks = 600;
 		this.colorItems = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 		this.animTime = 1000;
 		this.baseColor = 'black'
@@ -33,16 +35,17 @@ export default class Draw extends Base {
 	}
 
 	show() {
+		this.circle.show()
 		const template = this.fragment;
 
-		for (let key = 0; key < this.maxBlocks; key++) {
-			const block = this._createdBlock;
-
-			block.addEventListener('mouseenter', this._setChangeColorHandler.bind(this));
-			block.addEventListener('mouseout', this._removeChangeColorHandler.bind(this));
-
-			template.appendChild(block);
-		}
+		// for (let key = 0; key < this.maxBlocks; key++) {
+		// 	const block = this._createdBlock;
+		//
+		// 	block.addEventListener('mouseenter', this._setChangeColorHandler.bind(this));
+		// 	block.addEventListener('mouseout', this._removeChangeColorHandler.bind(this));
+		//
+		// 	template.appendChild(block);
+		// }
 
 		this.container.appendChild(template)
 	}
